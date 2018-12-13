@@ -12,6 +12,14 @@ MNote 意为 Markdown Note，一款本地Markdown笔记软件
 
 # 预览
 
+![]https://github.com/chancelyg/Images/raw/master/MNote/1.jpg
+
+![]https://github.com/chancelyg/Images/raw/master/MNote/2.jpg
+
+![]https://github.com/chancelyg/Images/raw/master/MNote/3.jpg
+
+![]https://github.com/chancelyg/Images/raw/master/MNote/4.jpg
+
 
 # 获取MNote
 
