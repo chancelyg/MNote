@@ -1,0 +1,14 @@
+﻿/* 窗口大于768px */
+@media (min-width: 1920) {
+    .mdui-container {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
+/* 窗口小于768px */
+@media (max-width:1280) {
+    .mdui-container {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}

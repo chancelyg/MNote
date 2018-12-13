@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E803DE03-0DEA-457A-AE11-B2FAA6D5DEF8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MNote</RootNamespace>
+    <AssemblyName>MNote</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\md_logo_64px.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NetDimension.NanUI, Version=0.6.3239.21621, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetDimension.NanUI.0.6.3239.1\lib\NetDimension.NanUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar, Version=4.6.4.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlSugar.4.6.4.9\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.108.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CSharpJS\NoteUtils.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NoteContent.cs" />
+    <Compile Include="Models\NoteContentHistory.cs" />
+    <Compile Include="Models\NoteTitle.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AppHotKey.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="Utils\DBUtils.cs" />
+    <Compile Include="Utils\IOEUtils.cs" />
+    <Compile Include="Utils\SQLText.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FNEdit\css\mdui.min.css.map" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Black.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Black.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-BlackItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-BlackItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Bold.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Bold.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-BoldItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-BoldItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Light.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Light.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-LightItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-LightItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Medium.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Medium.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-MediumItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-MediumItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Regular.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Regular.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-RegularItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-RegularItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Thin.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-Thin.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-ThinItalic.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\Roboto-ThinItalic.woff2" />
+    <EmbeddedResource Include="FNEdit\icons\material-icons\MaterialIcons-Regular.ijmap" />
+    <EmbeddedResource Include="FNEdit\icons\material-icons\MaterialIcons-Regular.woff" />
+    <EmbeddedResource Include="FNEdit\icons\material-icons\MaterialIcons-Regular.woff2" />
+    <EmbeddedResource Include="FNEdit\js\mdui.min.js.map" />
+    <EmbeddedResource Include="FNEdit\fonts\editormd-logo.eot" />
+    <EmbeddedResource Include="FNEdit\fonts\editormd-logo.ttf" />
+    <EmbeddedResource Include="FNEdit\fonts\editormd-logo.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\fontawesome-webfont.eot" />
+    <EmbeddedResource Include="FNEdit\fonts\fontawesome-webfont.ttf" />
+    <EmbeddedResource Include="FNEdit\fonts\fontawesome-webfont.woff" />
+    <EmbeddedResource Include="FNEdit\fonts\fontawesome-webfont.woff2" />
+    <EmbeddedResource Include="FNEdit\fonts\FontAwesome.otf" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\AUTHORS" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\bower.json" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\LICENSE" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\package.json" />
+    <None Include="DataBase\NoteDB.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="FNEdit\lib\codemirror\README.md" />
+    <EmbeddedResource Include="FNEdit\plugins\emoji-dialog\emoji.json" />
+    <EmbeddedResource Include="FNEdit\plugins\help-dialog\help.md" />
+    <EmbeddedResource Include="FNEdit\plugins\html-entities-dialog\html-entities.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FNEdit\js\jquery-3.2.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FNEdit\js\app.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_24px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_32px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_48px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_64px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_72px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_96px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_128px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="FNEdit\plugins\code-block-dialog\code-block-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\emoji-dialog\emoji-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\goto-line-dialog\goto-line-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\help-dialog\help-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\html-entities-dialog\html-entities-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\image-dialog\image-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\link-dialog\link-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\plugin-template.js" />
+    <EmbeddedResource Include="FNEdit\plugins\preformatted-text-dialog\preformatted-text-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\reference-link-dialog\reference-link-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\table-dialog\table-dialog.js" />
+    <EmbeddedResource Include="FNEdit\plugins\test-plugin\test-plugin.js" />
+    <EmbeddedResource Include="FNEdit\js\vue.js" />
+    <EmbeddedResource Include="FNEdit\css\media.css" />
+    <Content Include="Resources\md_logo_64px.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="FNEdit\css\editormd.min.css" />
+    <Content Include="FNEdit\css\index.css" />
+    <EmbeddedResource Include="FNEdit\css\style.css" />
+    <EmbeddedResource Include="FNEdit\js\editormd.js" />
+    <EmbeddedResource Include="FNEdit\fonts\editormd-logo.svg" />
+    <EmbeddedResource Include="FNEdit\fonts\fontawesome-webfont.svg" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addons.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\comment\comment.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\comment\continuecomment.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\dialog\dialog.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\dialog\dialog.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\display\fullscreen.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\display\fullscreen.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\display\panel.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\display\placeholder.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\display\rulers.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\closebrackets.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\closetag.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\continuelist.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\matchbrackets.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\matchtags.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\edit\trailingspace.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\brace-fold.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\comment-fold.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\foldcode.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\foldgutter.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\foldgutter.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\indent-fold.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\markdown-fold.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\fold\xml-fold.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\anyword-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\css-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\html-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\javascript-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\show-hint.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\show-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\sql-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\hint\xml-hint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\coffeescript-lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\css-lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\javascript-lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\json-lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\lint.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\lint\yaml-lint.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\merge\merge.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\merge\merge.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\mode\loadmode.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\mode\multiplex.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\mode\multiplex_test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\mode\overlay.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\mode\simple.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\runmode\colorize.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\runmode\runmode-standalone.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\runmode\runmode.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\runmode\runmode.node.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\scroll\annotatescrollbar.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\scroll\scrollpastend.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\scroll\simplescrollbars.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\scroll\simplescrollbars.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\search\match-highlighter.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\search\matchesonscrollbar.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\search\matchesonscrollbar.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\search\search.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\search\searchcursor.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\selection\active-line.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\selection\mark-selection.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\selection\selection-pointer.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\tern\tern.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\tern\tern.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\tern\worker.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\addon\wrap\hardwrap.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\codemirror.min.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\codemirror.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\lib\codemirror.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\lib\codemirror.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\modes.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\apl\apl.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\apl\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\asterisk\asterisk.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\asterisk\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\clike\clike.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\clike\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\clike\scala.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\clojure\clojure.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\clojure\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\cobol\cobol.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\cobol\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\coffeescript\coffeescript.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\coffeescript\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\commonlisp\commonlisp.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\commonlisp\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\css.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\less.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\less_test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\scss.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\scss_test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\css\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\cypher\cypher.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\cypher\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dart\dart.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dart\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\diff\diff.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\diff\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\django\django.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\django\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dockerfile\dockerfile.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dockerfile\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dtd\dtd.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dtd\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dylan\dylan.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\dylan\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\d\d.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\d\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ebnf\ebnf.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ebnf\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ecl\ecl.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ecl\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\eiffel\eiffel.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\eiffel\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\erlang\erlang.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\erlang\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\forth\forth.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\forth\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\fortran\fortran.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\fortran\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gas\gas.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gas\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gfm\gfm.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gfm\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gfm\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gherkin\gherkin.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\gherkin\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\go\go.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\go\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\groovy\groovy.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\groovy\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haml\haml.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haml\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haml\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haskell\haskell.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haskell\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haxe\haxe.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\haxe\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\htmlembedded\htmlembedded.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\htmlembedded\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\htmlmixed\htmlmixed.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\htmlmixed\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\http\http.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\http\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\idl\idl.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\idl\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\jade\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\jade\jade.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\javascript\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\javascript\javascript.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\javascript\json-ld.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\javascript\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\javascript\typescript.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\jinja2\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\jinja2\jinja2.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\julia\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\julia\julia.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\kotlin\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\kotlin\kotlin.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\livescript\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\livescript\livescript.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\lua\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\lua\lua.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\markdown\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\markdown\markdown.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\markdown\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\meta.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\mirc\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\mirc\mirc.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\mllike\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\mllike\mllike.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\modelica\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\modelica\modelica.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\nginx\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\nginx\nginx.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ntriples\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ntriples\ntriples.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\octave\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\octave\octave.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pascal\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pascal\pascal.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pegjs\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pegjs\pegjs.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\perl\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\perl\perl.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\php\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\php\php.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\php\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pig\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\pig\pig.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\properties\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\properties\properties.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\puppet\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\puppet\puppet.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\python\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\python\python.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\q\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\q\q.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rpm\changes\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rpm\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rpm\rpm.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rst\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rst\rst.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ruby\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ruby\ruby.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\ruby\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rust\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\rust\rust.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\r\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\r\r.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sass\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sass\sass.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\scheme\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\scheme\scheme.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\shell\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\shell\shell.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\shell\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sieve\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sieve\sieve.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\slim\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\slim\slim.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\slim\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smalltalk\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smalltalk\smalltalk.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smartymixed\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smartymixed\smartymixed.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smarty\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\smarty\smarty.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\solr\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\solr\solr.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\soy\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\soy\soy.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sparql\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sparql\sparql.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\spreadsheet\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\spreadsheet\spreadsheet.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sql\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\sql\sql.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\stex\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\stex\stex.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\stex\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\stylus\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\stylus\stylus.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tcl\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tcl\tcl.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\textile\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\textile\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\textile\textile.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiddlywiki\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiddlywiki\tiddlywiki.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiddlywiki\tiddlywiki.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiki\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiki\tiki.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tiki\tiki.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\toml\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\toml\toml.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tornado\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\tornado\tornado.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\turtle\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\turtle\turtle.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\vbscript\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\vbscript\vbscript.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\vb\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\vb\vb.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\velocity\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\velocity\velocity.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\verilog\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\verilog\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\verilog\verilog.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xml\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xml\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xml\xml.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xquery\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xquery\test.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\xquery\xquery.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\yaml\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\yaml\yaml.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\z80\index.html" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\mode\z80\z80.js" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\3024-day.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\3024-night.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\ambiance-mobile.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\ambiance.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\base16-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\base16-light.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\blackboard.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\cobalt.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\colorforth.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\eclipse.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\elegant.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\erlang-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\lesser-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\mbo.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\mdn-like.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\midnight.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\monokai.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\neat.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\neo.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\night.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\paraiso-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\paraiso-light.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\pastel-on-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\rubyblue.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\solarized.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\the-matrix.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\tomorrow-night-bright.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\tomorrow-night-eighties.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\twilight.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\vibrant-ink.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\xq-dark.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\xq-light.css" />
+    <EmbeddedResource Include="FNEdit\lib\codemirror\theme\zenburn.css" />
+    <EmbeddedResource Include="FNEdit\lib\flowchart.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\jquery.flowchart.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\marked.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\prettify.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\raphael.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\sequence-diagram.min.js" />
+    <EmbeddedResource Include="FNEdit\lib\underscore.min.js" />
+    <EmbeddedResource Include="FNEdit\css\app.css" />
+    <EmbeddedResource Include="FNEdit\css\mdui.css" />
+    <EmbeddedResource Include="FNEdit\css\mdui.min.css" />
+    <EmbeddedResource Include="FNEdit\fonts\roboto\LICENSE.txt" />
+    <EmbeddedResource Include="FNEdit\icons\material-icons\LICENSE.txt" />
+    <EmbeddedResource Include="FNEdit\index.html" />
+    <EmbeddedResource Include="FNEdit\js\mdui.js" />
+    <EmbeddedResource Include="FNEdit\js\mdui.min.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NetDimension.NanUI.Cef3239.3.3239.1723.0\build\NetDimension.NanUI.Cef3239.targets" Condition="Exists('..\packages\NetDimension.NanUI.Cef3239.3.3239.1723.0\build\NetDimension.NanUI.Cef3239.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NetDimension.NanUI.Cef3239.3.3239.1723.0\build\NetDimension.NanUI.Cef3239.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NetDimension.NanUI.Cef3239.3.3239.1723.0\build\NetDimension.NanUI.Cef3239.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
+</Project>

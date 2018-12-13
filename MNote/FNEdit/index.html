@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mdui.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://unpkg.com/ionicons@4.1.2/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/editormd.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/mdui.min.js"></script>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/editormd.js"></script>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+    <div id="app" style="height:100%">
+        <header class="mdui-appbar mdui-appbar-fixed" style="height:50px">
+            <div class="mdui-toolbar mdui-color-theme" style="height:100%">
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer', swipe: true}">
+                    <i class="mdui-icon material-icons">menu</i>
+                </span>
+                <p class="mdui-typo-headline mdui-hidden-xs">MNote</p>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white program-no-drag" mdui-dialog="{target: '#dialog-setting'}"
+                      mdui-tooltip="{content: '软件设置'}">
+                    <i class="mdui-icon material-icons">settings</i>
+                </span>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white program-no-drag" mdui-dialog="{target: '#dialog-history'}"
+                      mdui-tooltip="{content: '此笔记修改历史'}" v-on:click="GetHistoryNote">
+                    <i class="mdui-icon material-icons">history</i>
+                </span>
+                <div class="mdui-toolbar-spacer program-drag"></div>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white program-no-drag" n-ui-command="minimize" mdui-tooltip="{content: '缩小'}">
+                    <i class="mdui-icon material-icons">remove</i>
+                </span>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white program-no-drag" n-ui-command="maximize" mdui-tooltip="{content: '最大化'}">
+                    <i class="mdui-icon material-icons">check_box_outline_blank</i>
+                </span>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white program-no-drag" v-on:click="Close" mdui-tooltip="{content: '隐藏软件'}">
+                    <i class="mdui-icon material-icons ">close</i>
+                </span>
+            </div>
+        </header>
+
+        <div class="mdui-drawer mdui-drawer-open" id="main-drawer">
+
+            <div id="dv-title" class="mdui-list" mdui-collapse="{accordion: true}">
+                <p class="mdui-subheader">标签列表</p>
+                <ul class="mdui-list"></ul>
+                <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-theme" style="top:20px;bottom:20px">
+                    <i class="mdui-icon material-icons" mdui-dialog="{target: '#dialog-new-note'}">add</i>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="mdui-container-fluid doc-container" style="height:97%">
+            <div id="editor-md">
+                <textarea style="display:none;">
+</textarea>
+            </div>
+        </div>
+
+
+
+        <!--设置界面-->
+        <div id="dialog-setting" class="mdui-dialog">
+            <div class="mdui-dialog-title">设置</div>
+            <div class="mdui-dialog-content mdui-container">
+                <div class="mdui-textfield">
+                    <div class="mdui-container-fluid">
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-4">
+                                <h4 class="setting-title">界面</h4>
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '文本翻译成Markdown语法的速度'}">预览速度</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <input class="mdui-textfield-input" type="text" placeholder="文本翻译成Markdown语法的速度" />
+                            </div>
+                        </div>
+
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-4">
+                                <h4 class="setting-title">数据</h4>
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '每隔多少天自动备份数据'}">自动备份</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <input class="mdui-textfield-input" type="text" placeholder="自动备份数据周期（day）" />
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '把当前笔记内容保存为历史记录的快捷键'}">历史记录</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <input class="mdui-textfield-input" type="text" placeholder="把当前笔记内容保存为历史记录的快捷键" />
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-4">
+                                <h4 class="setting-title">其他</h4>
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '预览自动备份的目录'}">备份目录</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <button class="mdui-btn mdui-color-theme mdui-ripple">更改</button>
+                                <button class="mdui-btn mdui-color-theme mdui-ripple">预览</button>
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '导出笔记数据，可用于备份'}">导出数据</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <button class="mdui-btn mdui-color-theme mdui-ripple">导入</button>
+                                <button class="mdui-btn mdui-color-theme mdui-ripple">导出</button>
+                            </div>
+                        </div>
+                        <div class="mdui-row">
+                            <div class="mdui-col-xs-3">
+                                <p class="settings-p" mdui-tooltip="{content: '关闭按钮是否直接关闭软件'}">关闭按钮</p>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield">
+                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised" disabled>隐藏</button>
+                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+                <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-ripple mdui-color-red-accent" mdui-dialog-confirm>保存</button>
+            </div>
+        </div>
+
+        <!--新建标签对话框-->
+        <div id="dialog-new-note" class="mdui-dialog">
+            <div class="mdui-dialog-title">标签新建</div>
+            <div class="mdui-dialog-content">
+                <div class="mdui-textfield">
+                    <input class="mdui-textfield-input" type="text" placeholder="标签名称" autofocus />
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+                <button class="mdui-btn mdui-ripple" mdui-dialog-confirm v-on:click="SaveNewNote">确认</button>
+            </div>
+        </div>
+
+
+        <!--笔记历史记录-->
+        <div id="dialog-history" class="mdui-dialog">
+            <div class="mdui-dialog-title">历史记录</div>
+            <div class="mdui-dialog-content">
+                <div class="mdui-textfield">
+                    <div class="mdui-textfield">
+                        <ul class="mdui-list">
+                            <li v-if="noteHistorys == null"><p><small>Sorry，当前笔记似乎没有更多历史记录..</small></p></li>
+                            <li class="mdui-list-item mdui-ripple mdui-text-color-blue-accent" mdui-tooltip="{content: '点击恢复'}" v-for="item in noteHistorys" v-on:click="GetHistoryContent" mdui-dialog-close>
+                            修改时间：{{item}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+    
+</body>
+
+</html>

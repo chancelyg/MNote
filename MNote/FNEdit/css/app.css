@@ -1,0 +1,68 @@
+﻿.sideImg{
+    height: 200px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.side-info-more{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    color:#ffffff;
+    font-size: 17px
+
+}
+
+.side-info-oth{
+    color:hsla(0, 0%, 100%, 7);
+    font-size: 13px;
+}
+
+.nightVision{
+    position:absolute;
+    top:10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0,.5);
+}
+
+html, body {
+    height:100%;
+}
+
+.program-drag {
+    height: 100%;
+    -webkit-app-region: drag;
+}
+
+.program-no-drag {
+    -webkit-app-region: no-drag;
+}
+
+/* .mdui-btn-icon{
+    width:36px;
+    min-width: 36px;
+    height: 36px;
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0%;
+    overflow: hidden;
+    font-size: 24px;
+    line-height: normal;
+    border-radius: 50%;
+}
+ */
+
+#dialog-history {
+    height:400px;
+    width:320px;
+}
+
+.settings-p {
+    margin-top:25px;
+}
+.setting-title {
+    text-align: left;
+}
