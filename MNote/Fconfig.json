@@ -1,0 +1,7 @@
+﻿{
+  "preview_speed": 1000,
+  "auto_backup_day": 5,
+  "history_keyboard_shortcut": "Ctrl+S",
+  "data_backup_path": null,
+  "is_shutdown_software": false
+}

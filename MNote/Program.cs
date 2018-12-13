@@ -16,7 +16,9 @@ namespace FNote {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // 备份数据库文件
-            IOEUtils.SaveBackupDB();
+            // IOEUtils.SaveBackupDB();
+            
+
 
             //指定CEF架构和文件目录结构，并初始化CEF
             if (Bootstrap.Load(settings => {

@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharpJS\NoteUtils.cs" />
+    <Compile Include="Entity\FConfig.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,8 +216,8 @@
     <None Include="Resources\logo_128px.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Fconfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <EmbeddedResource Include="FNEdit\plugins\code-block-dialog\code-block-dialog.js" />
     <EmbeddedResource Include="FNEdit\plugins\emoji-dialog\emoji-dialog.js" />

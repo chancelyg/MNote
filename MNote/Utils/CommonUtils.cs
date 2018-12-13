@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MNote.Entity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,5 +90,24 @@ namespace FNote.Utils {
             return result;
         }
         #endregion
+
+
+        private static FConfig fConfig;
+        /// <summary>
+        /// 获取配置实例
+        /// </summary>
+        public static FConfig ConfigInstance {
+            get {
+                if (fConfig == null) {
+                    var sourceContent = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/FConfig.json");
+                    fConfig = JsonConvert.DeserializeObject<FConfig>(sourceContent);
+                }
+                return fConfig;
+            }
+            set{
+                fConfig = value;
+                fConfig.SaveConfig();
+            }
+        }
     }
 }

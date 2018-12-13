@@ -84,7 +84,7 @@
                                 <p class="settings-p" mdui-tooltip="{content: '文本翻译成Markdown语法的速度'}">预览速度</p>
                             </div>
                             <div class="mdui-col-xs-9 mdui-textfield">
-                                <input class="mdui-textfield-input" type="text" placeholder="文本翻译成Markdown语法的速度" />
+                                <input v class="mdui-textfield-input" type="text" v-model="config.preview_speed" />
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                                 <p class="settings-p" mdui-tooltip="{content: '每隔多少天自动备份数据'}">自动备份</p>
                             </div>
                             <div class="mdui-col-xs-9 mdui-textfield">
-                                <input class="mdui-textfield-input" type="text" placeholder="自动备份数据周期（day）" />
+                                <input class="mdui-textfield-input" type="text"  v-model="config.auto_backup_day"/>
                             </div>
                         </div>
                         <div class="mdui-row">
@@ -106,7 +106,7 @@
                                 <p class="settings-p" mdui-tooltip="{content: '把当前笔记内容保存为历史记录的快捷键'}">历史记录</p>
                             </div>
                             <div class="mdui-col-xs-9 mdui-textfield">
-                                <input class="mdui-textfield-input" type="text" placeholder="把当前笔记内容保存为历史记录的快捷键" />
+                                <input class="mdui-textfield-input" type="text" v-model="config.history_keyboard_shortcut" />
                             </div>
                         </div>
                         <div class="mdui-row">
@@ -136,9 +136,13 @@
                             <div class="mdui-col-xs-3">
                                 <p class="settings-p" mdui-tooltip="{content: '关闭按钮是否直接关闭软件'}">关闭按钮</p>
                             </div>
-                            <div class="mdui-col-xs-9 mdui-textfield">
+                            <div class="mdui-col-xs-9 mdui-textfield" v-if="config.is_shutdown_software">
+                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised" v-on:click="config.is_shutdown_software=false">隐藏</button>
+                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised" disabled>关闭</button>
+                            </div>
+                            <div class="mdui-col-xs-9 mdui-textfield" v-else>
                                 <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised" disabled>隐藏</button>
-                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised">关闭</button>
+                                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-btn-raised" v-on:click="config.is_shutdown_software=true">关闭</button>
                             </div>
                         </div>
                     </div>
@@ -146,7 +150,7 @@
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
-                <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-ripple mdui-color-red-accent" mdui-dialog-confirm>保存</button>
+                <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-ripple mdui-color-red-accent" mdui-dialog-confirm v-on:click="SaveConfig()">保存</button>
             </div>
         </div>
 

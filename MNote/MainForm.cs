@@ -4,7 +4,9 @@ using Chromium.Remote.Event;
 using FNote.CSharpJS;
 using FNote.Models;
 using FNote.Utils;
+using MNote.Entity;
 using NetDimension.NanUI;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,7 +79,32 @@ namespace FNote {
             var SelectDataPathFormCSFunc = noteUtilsJsObj.AddFunction("SelectDataPath");
             SelectDataPathFormCSFunc.Execute += SelectDataPathFormCSFunc_Execute;
 
+            var GetConfigFormCSFunc = noteUtilsJsObj.AddFunction("GetConfig");
+            GetConfigFormCSFunc.Execute += GetConfigFormCSFunc_Execute;
 
+            var SetConfigFormCSFunc = noteUtilsJsObj.AddFunction("SetConfig");
+            SetConfigFormCSFunc.Execute += SetConfigFormCSFunc_Execute;
+
+
+        }
+
+        private void SetConfigFormCSFunc_Execute(object sender, CfrV8HandlerExecuteEventArgs e) {
+            EvaluateJavascript("app.GetConfig()", (value, exception) =>
+            {
+                if (value.IsString) {
+                    // Get value from Javascript.
+                    var jsValue = value.StringValue;
+                    CommonUtils.ConfigInstance = JsonConvert.DeserializeObject<FConfig>(jsValue);
+                }
+            });
+        }
+
+        private void GetConfigFormCSFunc_Execute(object sender, CfrV8HandlerExecuteEventArgs e) {
+            var config = JsonConvert.SerializeObject(CommonUtils.ConfigInstance);
+            var jsObjectAccessor = new CfrV8Accessor();
+            var jsObject = CfrV8Value.CreateObject(jsObjectAccessor);
+            jsObject.SetValue("config", config, CfxV8PropertyAttribute.DontDelete);
+            e.SetReturnValue(jsObject);
         }
 
         private void SelectDataPathFormCSFunc_Execute(object sender, CfrV8HandlerExecuteEventArgs e) {
@@ -123,6 +150,10 @@ namespace FNote {
         }
 
         private void CloseFormCSFunc_Execute(object sender, CfrV8HandlerExecuteEventArgs e) {
+            var config = CommonUtils.ConfigInstance;
+            if(config.is_shutdown_software){
+                Application.Exit();
+            }
             this.Hide();
         }
 

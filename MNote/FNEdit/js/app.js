@@ -13,30 +13,31 @@ var tagModel = function () {
     self.currentTag = null;
 }
 
-/**
- * app设置参数
- * */
-var appSetting = function () {
+var example_config = function () {
     var self = this;
-    self.server_ip = "127.0.0.1";
-    self.proview_speed = 1000;
+    self.preview_speed = 1000;
+    self.auto_backup_day = 5;
+    self.history_keyboard_shortcut = "Ctrl+S";
+    self.data_backup_path = "default";
+    self.is_shutdown_software = false;
 }
 
 var app = new Vue({
     el: "#app",
     data: {
         title: "Chancel",
+        config: new example_config(),
         noteHistorys: [
         ],
     },
     mounted: function () {
-        /// url:http://pandao.github.io/editor.md/examples/
+        this.config = JSON.parse(NoteUtils.GetConfig().config)
         mEditor = editormd("editor-md", {
             width: "100%",
             height: "100%",
             syncScrolling: "single",
             path: "lib/",
-            delay: appSetting.proview_speed,
+            delay: this.config.proview_speed,
             toolbarIcons: function () {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
                 // Using "||" set icons align right.
@@ -280,7 +281,12 @@ var app = new Vue({
             NoteUtils.Close();
         },
 
-
+        SaveConfig: function () {
+            NoteUtils.SetConfig();
+        },
+        GetConfig: function () {
+            return JSON.stringify(app.config);
+        }
     }
 })
 
